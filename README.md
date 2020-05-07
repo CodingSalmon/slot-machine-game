@@ -1,7 +1,7 @@
 # slot-machine-game
 
 ## Getting Started
-[Click Here to open game in browser](www.github.com/salmon117/slot-machine.git)
+[Click Here to open game in browser](www.github.com/salmon117/slot-machine-game.git)
 
 ## Technologies
 - HTML
