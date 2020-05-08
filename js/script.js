@@ -1,5 +1,5 @@
 //Pseudocode
-//Modul pops up asking for how much money the person wants to input.
+//Modal pops up asking for how much money the person wants to input.
 //Changes that money into tokens for game.
 //Have a display that shows chances for certain icons and payout amounts for matches.
 //Person can toggle how many tokens they want to bet at a time.
@@ -12,7 +12,7 @@
 
 
 
-//Constants
+// Constants
 const icons = {
     [1]: seven,
     [2,3,4,5]: bar,
@@ -22,10 +22,36 @@ const icons = {
     [51]: orange,
     [76]: lemon
 }
-//Variables
+// Variables
+let dollars;
+let coins;
+let ;
 
-//Cached DOM Elements
+// Cached DOM Elements
+let rollerEl1;
+let rollerEl2;
+let rollerEl3;
 
-//Event Listeners
 
-//Functions
+// Event Listeners
+document.addEventListener('DOMContentLoaded', function(){
+
+});
+
+// Functions
+init();
+
+function init() {
+
+    render();
+};
+
+function render(){
+
+
+};
+
+function rollRoller(){
+
+};
+

@@ -10,9 +10,11 @@
 
 ## Screenshots
 
-![]()
+![Main Game Page]()
 
-![]()
+![What it looks like when you win coins]()
+
+![What it looks like when you lose coins]()
 
 ## Future Enhancements
 
