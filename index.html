@@ -4,24 +4,52 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <script defer src="js/script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <title>Slot Machine</title>
     </head>
 
     <body>
-        <div>Left Div</div>
+        <div>Left Side</div>
         <div id="middle">
-            <header>
+
+            <header id="coinArea">
                 <div id="coinDisp">
-                    Current Coins:<br>200
+                    Current Coins:<br>XXX
                 </div>
-                <div id="addMoney">
-                    <img src="images/plus.png" alt="Plus Sign">
-                </div>
+
+                <div id="addMoney"><img src="images/plus.png" alt="Plus Sign"></div>
             </header>
-            <main>Slot Machine</main>
-            <footer></footer>
+
+            <main id="playArea">
+                <div id="slot">
+                    <div id="msg">Welcome</div>
+                    <div id="starAreaOne"><img src="images/star.png"><img src="images/upsidedownstar.png"><img src="images/star.png"></div>
+                    <div class="rollers">
+                        <div id="roller1">1<img src="" alt=""></div>
+                        <div id="roller2">2<img src="" alt=""></div>
+                        <div id="roller3">3<img src="" alt=""></div>
+                    </div>
+                    <div id="starAreaTwo"><img src="images/upsidedownstar.png"><img src="images/star.png"><img src="images/upsidedownstar.png"></div>
+                </div>
+            </main>
+
+            <footer>
+
+            </footer>
+
         </div>
-        <div>Right Div</div>
+        <div id="rewardDisplay">Reward Display</div>
+
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h3>Welcome</h3>
+                <p>How much money would you like to add into the game?
+                    <br>$1 = 5 coins
+                </p>
+            </div>
+        </div>
+
     </body>
 </html>
