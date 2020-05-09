@@ -10,6 +10,7 @@ body{
 #middle{
     display:grid;
     grid-template-rows:50px auto 100px;
+    padding-top:10px;
 }
 
 #coinArea{
@@ -87,6 +88,20 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
+}
+
+#roller1 > img, #roller2 > img, #roller3 > img{
+    width:80px;
+}
+
+#buttonArea{
+    display:flex;
+    justify-content:space-around;
+}
+
+#buttonArea > button{
+    border-radius:50%;
+    width:80px;
 }
 
 #rewardDisplay{

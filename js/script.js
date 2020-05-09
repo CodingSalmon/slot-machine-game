@@ -14,34 +14,41 @@
 
 // Constants
 const icons = {
-    seven = {
+    diamond: {
         chance: 1,
-        imgPath:images/seven.png
+        imgPath:'images/diamond.png'
     },
-    [2]: 'bar',
+    bar: {
+        chance:2,
+        imgPath:'images/bar.png'
+    },
     [6]: 'bell',
     [16]: 'cherry',
-    [31]: 'grape',
-    [51]: 'orange',
+    [31]: 'horseshoe',
+    [51]: 'grape',
     [76]: 'lemon'
 }
 
 const modalOptions = {
     inDuration:250
 }
+
 // Variables
 let dollars;
 let coins;
 
+
 // Cached DOM Elements
-let rollerEl1;
-let rollerEl2;
-let rollerEl3;
+let rollerEl1 = document.querySelector('#roller1 > img');
+let rollerEl2 = document.querySelector('#roller2 > img');
+let rollerEl3 = document.querySelector('#roller3 > img');
+let addMoneyEl = document.querySelector('#addMoney')
 
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', openModal);
-document.querySelector('#addMoney').addEventListener('click',openModal);
+addMoneyEl.addEventListener('click',openModal);
+
 
 // Functions
 init();
@@ -56,10 +63,14 @@ function render(){
 
 };
 
+function handleClick(){
+
+}
+
 function rollRoller(){
 
 };
 
 function openModal(){
-    M.Modal.init(document.querySelector('#modal'),modalOptions);
+    M.Modal.init(document.querySelector('#modal1'),modalOptions);
 }
