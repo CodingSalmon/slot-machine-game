@@ -14,19 +14,13 @@
 
 // Constants
 const icons = {
-    diamond: {
-        chance: 1,
-        imgPath:'images/diamond.png'
-    },
-    bar: {
-        chance:2,
-        imgPath:'images/bar.png'
-    },
-    [6]: 'bell',
-    [16]: 'cherry',
-    [31]: 'horseshoe',
-    [51]: 'grape',
-    [76]: 'lemon'
+    diamond: 'images/diamond.png',
+    bar: 'images/bar.png',
+    bell: 'images/bell.png',
+    cherry: 'images/cherry.png',
+    horseshoe: 'images/horseshoe.png',
+    grape: 'images/grape.png',
+    lemon: 'images/lemon.png'
 }
 
 const modalOptions = {
@@ -36,41 +30,102 @@ const modalOptions = {
 // Variables
 let dollars;
 let coins;
-
+let roller1;
+let roller2;
+let roller3;
 
 // Cached DOM Elements
 let rollerEl1 = document.querySelector('#roller1 > img');
 let rollerEl2 = document.querySelector('#roller2 > img');
 let rollerEl3 = document.querySelector('#roller3 > img');
-let addMoneyEl = document.querySelector('#addMoney')
-
+let addMoneyEl = document.querySelector('#addMoney');
+let playButton = document.querySelector('#playButton');
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', openModal);
 addMoneyEl.addEventListener('click',openModal);
-
+playButton.addEventListener('click', handlePlayClick);
 
 // Functions
 init();
 
 function init() {
-
+    
     render();
 };
 
 function render(){
-
-
+    rollerEl1.src = icons[roller1];
+    rollerEl2.src = icons[roller2];
+    rollerEl3.src = icons[roller3];
 };
 
-function handleClick(){
+function handlePlayClick(){
+    rollRoller1();
+    rollRoller2();
+    rollRoller3();
 
+    render();
 }
 
-function rollRoller(){
+function rollRoller1(){
+    num = getRandomInt(100);
+    if (num === 1)
+        roller1 = 'seven';
+    if (num >= 2 && num <= 5)
+        roller1 = 'bar';
+    if (num >= 6 && num <= 15)
+        roller1 = 'bell';
+    if (num >= 16 && num <= 30)
+        roller1 = 'cherry';
+    if (num >= 31 && num <= 50)
+        roller1 = 'horseshoe';
+    if (num >= 51 && num <= 70)
+        roller1 = 'grape';
+    if (num >= 71 && num <= 100)
+        roller1 = 'lemon';
+};
 
+function rollRoller2(){
+    num = getRandomInt(100);
+    if (num === 1)
+        roller2 = 'seven';
+    if (num >= 2 && num <= 5)
+        roller2 = 'bar';
+    if (num >= 6 && num <= 15)
+        roller2 = 'bell';
+    if (num >= 16 && num <= 30)
+        roller2 = 'cherry';
+    if (num >= 31 && num <= 50)
+        roller2 = 'horseshoe';
+    if (num >= 51 && num <= 70)
+        roller2 = 'grape';
+    if (num >= 71 && num <= 100)
+        roller2 = 'lemon';
+};
+
+function rollRoller3(){
+    num = getRandomInt(100);
+    if (num === 1)
+        roller3 = 'seven';
+    if (num >= 2 && num <= 5)
+        roller3 = 'bar';
+    if (num >= 6 && num <= 15)
+        roller3 = 'bell';
+    if (num >= 16 && num <= 30)
+        roller3 = 'cherry';
+    if (num >= 31 && num <= 50)
+        roller3 = 'horseshoe';
+    if (num >= 51 && num <= 70)
+        roller3 = 'grape';
+    if (num >= 71 && num <= 100)
+        roller3 = 'lemon';
 };
 
 function openModal(){
-    M.Modal.init(document.querySelector('#modal1'),modalOptions);
+    M.Modal.init(document.querySelector('.modal'),modalOptions);
+}
+
+function getRandomInt(num){
+    return Math.floor(Math.random() * num);
 }
