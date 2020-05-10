@@ -10,8 +10,6 @@
 //Display amount of tokens won if they match 3 of a certain icon.
 //Player does not have to pick amount of tokens to bet but can choose to change amount.
 
-
-
 // Constants
 const icons = {
     diamond: 'images/diamond.png',
@@ -30,9 +28,9 @@ const modalOptions = {
 // Variables
 let dollars;
 let coins;
-let roller1;
-let roller2;
-let roller3;
+let roller1 = null;
+let roller2 = null;
+let roller3 = null;
 
 // Cached DOM Elements
 let rollerEl1 = document.querySelector('#roller1 > img');
@@ -58,6 +56,7 @@ function render(){
     rollerEl1.src = icons[roller1];
     rollerEl2.src = icons[roller2];
     rollerEl3.src = icons[roller3];
+    checkWin();
 };
 
 function handlePlayClick(){
@@ -127,5 +126,12 @@ function openModal(){
 }
 
 function getRandomInt(num){
-    return Math.floor(Math.random() * num);
+    return Math.floor((Math.random() * num) + 1);
+}
+
+function checkWin(){
+    if ((rollerEl1.src === rollerEl2.src && rollerEl2.src === rollerEl3.src) && roller1 !== null)
+        console.log('winner');
+    else
+        console.log('loser');
 }
