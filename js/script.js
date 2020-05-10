@@ -18,7 +18,8 @@ const icons = {
     cherry: 'images/cherry.png',
     horseshoe: 'images/horseshoe.png',
     grape: 'images/grape.png',
-    lemon: 'images/lemon.png'
+    lemon: 'images/lemon.png',
+    undefined: 'images/undefined.png'
 }
 
 const modalOptions = {
@@ -28,9 +29,9 @@ const modalOptions = {
 // Variables
 let dollars;
 let coins;
-let roller1 = null;
-let roller2 = null;
-let roller3 = null;
+let roller1 = undefined;
+let roller2 = undefined;
+let roller3 = undefined;
 
 // Cached DOM Elements
 let rollerEl1 = document.querySelector('#roller1 > img');
@@ -130,7 +131,7 @@ function getRandomInt(num){
 }
 
 function checkWin(){
-    if ((rollerEl1.src === rollerEl2.src && rollerEl2.src === rollerEl3.src) && roller1 !== null)
+    if ((rollerEl1.src === rollerEl2.src && rollerEl2.src === rollerEl3.src) && roller1 !== undefined)
         console.log('winner');
     else
         console.log('loser');
