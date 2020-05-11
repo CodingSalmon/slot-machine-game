@@ -18,38 +18,42 @@ const icons = {
     cherry: 'images/cherry.png',
     horseshoe: 'images/horseshoe.png',
     grape: 'images/grape.png',
-    lemon: 'images/lemon.png',
     undefined: 'images/undefined.png'
-}
-
-const modalOptions = {
-    inDuration:250
 }
 
 // Variables
 let dollars;
 let coins;
-let roller1 = undefined;
-let roller2 = undefined;
-let roller3 = undefined;
+let winner;
+let roller1;
+let roller2;
+let roller3;
+let difficulty;
 
 // Cached DOM Elements
 let rollerEl1 = document.querySelector('#roller1 > img');
 let rollerEl2 = document.querySelector('#roller2 > img');
 let rollerEl3 = document.querySelector('#roller3 > img');
 let addMoneyEl = document.querySelector('#addMoney');
-let playButton = document.querySelector('#playButton');
+let playButtonEl = document.querySelector('#playButton');
+let coinDisplayEl = document.querySelector('#coinDisp');
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', openModal);
 addMoneyEl.addEventListener('click',openModal);
-playButton.addEventListener('click', handlePlayClick);
+playButtonEl.addEventListener('click', handlePlayClick);
 
 // Functions
 init();
 
 function init() {
-    
+    coins = 0;
+    winner = null;
+    roller1 = undefined;
+    roller2 = undefined;
+    roller3 = undefined;
+    difficulty = 'e';
+
     render();
 };
 
@@ -57,6 +61,8 @@ function render(){
     rollerEl1.src = icons[roller1];
     rollerEl2.src = icons[roller2];
     rollerEl3.src = icons[roller3];
+    coinDisplayEl.innerHTML = `Current Coins:<br>${coins}`;
+
     checkWin();
 };
 
@@ -76,14 +82,12 @@ function rollRoller1(){
         roller1 = 'bar';
     if (num >= 11 && num <= 22)
         roller1 = 'bell';
-    if (num >= 23 && num <= 40)
-        roller1 = 'cherry';
-    if (num >= 41 && num <= 55)
+    if (num >= 23 && num <= 45)
         roller1 = 'horseshoe';
-    if (num >= 56 && num <= 75)
+    if (num >= 46 && num <= 65)
+        roller1 = 'cherry';
+    if (num >= 66 && num <= 100)
         roller1 = 'grape';
-    if (num >= 76 && num <= 100)
-        roller1 = 'lemon';
 };
 
 function rollRoller2(){
@@ -94,14 +98,12 @@ function rollRoller2(){
         roller2 = 'bar';
     if (num >= 11 && num <= 22)
         roller2 = 'bell';
-    if (num >= 23 && num <= 40)
-        roller2 = 'cherry';
-    if (num >= 41 && num <= 55)
+    if (num >= 23 && num <= 45)
         roller2 = 'horseshoe';
-    if (num >= 56 && num <= 75)
+    if (num >= 46 && num <= 65)
+        roller2 = 'cherry';
+    if (num >= 66 && num <= 100)
         roller2 = 'grape';
-    if (num >= 76 && num <= 100)
-        roller2 = 'lemon';
 };
 
 function rollRoller3(){
@@ -112,18 +114,17 @@ function rollRoller3(){
         roller3 = 'bar';
     if (num >= 11 && num <= 22)
         roller3 = 'bell';
-    if (num >= 23 && num <= 40)
-        roller3 = 'cherry';
-    if (num >= 41 && num <= 55)
+    if (num >= 23 && num <= 45)
         roller3 = 'horseshoe';
-    if (num >= 56 && num <= 75)
+    if (num >= 46 && num <= 65)
+        roller3 = 'cherry';
+    if (num >= 66 && num <= 100)
         roller3 = 'grape';
-    if (num >= 76 && num <= 100)
-        roller3 = 'lemon';
 };
 
 function openModal(){
-    M.Modal.init(document.querySelector('.modal'),modalOptions);
+    const modal = document.querySelector('.modal');
+    M.Modal.init(modal,{});
 }
 
 function getRandomInt(num){
@@ -131,8 +132,37 @@ function getRandomInt(num){
 }
 
 function checkWin(){
-    if ((rollerEl1.src === rollerEl2.src && rollerEl2.src === rollerEl3.src) && roller1 !== undefined)
-        console.log('winner');
+    if ((rollerEl1.src === rollerEl2.src && rollerEl2.src === rollerEl3.src) && roller1 !== undefined){
+        if(roller1 === 'diamond')
+            winner = 'diamond';
+        if(roller1 === 'bar')
+            winner = 'bar';
+        if(roller1 === 'bell')
+            winner = 'bell';
+        if(roller1 === 'horseshoe')
+            winner = 'horseshoe';
+        if(roller1 === 'cherry')
+            winner = 'cherry';
+        if(roller1 === 'grape')
+            winner = 'grape';
+        addCoins();
+    }
     else
-        console.log('loser');
+        winner = null;
+}
+
+function addCoins(){
+    if(winner === 'diamond')
+        coins += 50;
+    if(winner === 'bar')
+        coins += 10;
+    if(winner === 'bell')
+        coins += 5;
+    if(winner === 'horseshoe')
+        coins += 3;
+    if(winner === 'cherry')
+        coins += 2;
+    if(winner === 'grape')
+        coins += 1;
+    
 }

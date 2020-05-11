@@ -3,9 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script defer src="js/script.js"></script>
         <title>Slot Machine</title>
@@ -16,7 +16,7 @@
         <div id="middle">
 
             <header id="coinArea">
-                <div id="coinDisp">Current Coins:<br>XXX</div>
+                <div id="coinDisp"></div>
                 <div id="addMoney"><img src="images/plus.png" alt="Plus Sign"></div>
             </header>
 
@@ -30,7 +30,11 @@
                         <div id="roller3"><img src="" alt=""></div>
                     </div>
                     <div id="starAreaTwo"><img src="images/upsidedownstar.png"><img src="images/star.png"><img src="images/upsidedownstar.png"></div>
-                    <div id="buttonArea"><button>Bet<br>1 Coin</button><button>Bet<br>5 Coins</button><button>Bet<br>10 Coins</button></div>
+                    <div id="buttonArea">
+                        <button id="difE">Bet<br>1 Coin</button>
+                        <button id="difM">Bet<br>5 Coins</button>
+                        <button id="difH">Bet<br>10 Coins</button>
+                    </div>
                     <div id="playButtonArea">
                         <div><button id="playButton">Play!</button></div>
                     </div>
@@ -51,6 +55,7 @@
                     <br>$1 = 5 coins
                 </p>
             </div>
+            <div class="modal-footer"><button class="modal-close">OK</button></div>
         </div>
 
     </body>
