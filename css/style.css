@@ -1,5 +1,6 @@
 *{
     box-sizing:border-box;
+    font-family: 'Orbitron', sans-serif;
 }
 
 body{
@@ -100,7 +101,21 @@ body{
 }
 
 #buttonArea > button{
-    border-radius:50%;
+    font-family: 'Orbitron', sans-serif;
+    border-radius:30%;
+    width:90px;
+}
+
+#playButtonArea{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:350px;
+}
+
+#playButton{
+    font-family: 'Orbitron', sans-serif;
+    height:40px;
     width:80px;
 }
 
