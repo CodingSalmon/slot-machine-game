@@ -21,6 +21,11 @@ const icons = {
     undefined: 'images/undefined.png'
 }
 
+const difficulty = {
+    e: 1,
+    m: 5,
+    h: 10
+}
 // Variables
 let dollars;
 let coins;
@@ -28,7 +33,7 @@ let winner;
 let roller1;
 let roller2;
 let roller3;
-let difficulty;
+let currentDif;
 
 // Cached DOM Elements
 let rollerEl1 = document.querySelector('#roller1 > img');
@@ -52,7 +57,7 @@ function init() {
     roller1 = undefined;
     roller2 = undefined;
     roller3 = undefined;
-    difficulty = 'e';
+    currentDif = 'e';
 
     render();
 };

@@ -19,4 +19,4 @@
 ## Future Enhancements
 
 1. Add login/logout.
-2. Add mobile responsiveness
+2. Add mobile responsiveness.
