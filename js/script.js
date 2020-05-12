@@ -26,6 +26,8 @@ const difficulty = {
     m: 5,
     h: 10
 }
+
+
 // Variables
 let dollars;
 let coins;
@@ -34,8 +36,11 @@ let roller1;
 let roller2;
 let roller3;
 let currentDif;
+let isRolling;
 
 // Cached DOM Elements
+const modalEl1 = document.querySelector('#modal1');
+const modalEl2 = document.querySelector('#modal2');
 let rollerEl1 = document.querySelector('#roller1 > img');
 let rollerEl2 = document.querySelector('#roller2 > img');
 let rollerEl3 = document.querySelector('#roller3 > img');
@@ -44,8 +49,8 @@ let playButtonEl = document.querySelector('#playButton');
 let coinDisplayEl = document.querySelector('#coinDisp');
 
 // Event Listeners
-document.addEventListener('DOMContentLoaded', openModal);
-addMoneyEl.addEventListener('click',openModal);
+document.addEventListener('DOMContentLoaded', openModal1);
+addMoneyEl.addEventListener('click',openModal1);
 playButtonEl.addEventListener('click', handlePlayClick);
 
 // Functions
@@ -58,6 +63,7 @@ function init() {
     roller2 = undefined;
     roller3 = undefined;
     currentDif = 'e';
+    isRolling = false;
 
     render();
 };
@@ -72,9 +78,12 @@ function render(){
 };
 
 function handlePlayClick(){
+    if (isRolling)
+        return;
+    isRolling = true;
     rollRoller1();
-    rollRoller2();
-    rollRoller3();
+    setTimeout(() => {rollRoller2();render();},500);
+    setTimeout(() => {rollRoller3();render();isRolling = false;},1000);
 
     render();
 }
@@ -127,10 +136,13 @@ function rollRoller3(){
         roller3 = 'grape';
 };
 
-function openModal(){
-    const modal = document.querySelector('.modal');
-    M.Modal.init(modal,{});
+function openModal1(){
+    M.Modal.init(modalEl1,{}).open();
 }
+
+// function openModal2(){
+//     M.Modal.init(modalEl2,{}).open();
+// }
 
 function getRandomInt(num){
     return Math.floor((Math.random() * num) + 1);
