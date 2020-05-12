@@ -26,8 +26,6 @@ const difficulty = {
     m: 5,
     h: 10
 }
-
-
 // Variables
 let dollars;
 let coins;
@@ -37,22 +35,29 @@ let roller2;
 let roller3;
 let currentDif;
 let isRolling;
-
 // Cached DOM Elements
 const modalEl1 = document.querySelector('#modal1');
 const modalEl2 = document.querySelector('#modal2');
+
+let moneyEl = document.querySelector('#money');
+let coinDisplayEl = document.querySelector('#coinDisp');
+let addMoneyEl = document.querySelector('#addMoney');
+
 let rollerEl1 = document.querySelector('#roller1 > img');
 let rollerEl2 = document.querySelector('#roller2 > img');
 let rollerEl3 = document.querySelector('#roller3 > img');
-let addMoneyEl = document.querySelector('#addMoney');
-let playButtonEl = document.querySelector('#playButton');
-let coinDisplayEl = document.querySelector('#coinDisp');
 
+let buttonAreaEl = document.querySelector('#buttonArea');
+let easyButton = document.querySelector('#difE');
+let medButton = document.querySelector('#difM');
+let hardButton = document.querySelector('#difH');
+let playButtonEl = document.querySelector('#playButton');
 // Event Listeners
 document.addEventListener('DOMContentLoaded', openModal1);
 addMoneyEl.addEventListener('click',openModal1);
 playButtonEl.addEventListener('click', handlePlayClick);
-
+document.querySelector('.modal-close').addEventListener('click',getMoney);
+buttonAreaEl.addEventListener('click',setDifficulty);
 // Functions
 init();
 
@@ -78,15 +83,19 @@ function render(){
 };
 
 function handlePlayClick(){
-    if (isRolling)
+    if (isRolling) return;
+    if (coins === 0){
+        openModal2();
         return;
+    }
     isRolling = true;
+    coins -= difficulty[currentDif];
     rollRoller1();
     setTimeout(() => {rollRoller2();render();},500);
     setTimeout(() => {rollRoller3();render();isRolling = false;},1000);
 
     render();
-}
+};
 
 function rollRoller1(){
     num = getRandomInt(100);
@@ -140,9 +149,9 @@ function openModal1(){
     M.Modal.init(modalEl1,{}).open();
 }
 
-// function openModal2(){
-//     M.Modal.init(modalEl2,{}).open();
-// }
+function openModal2(){
+    M.Modal.init(modalEl2,{}).open();
+}
 
 function getRandomInt(num){
     return Math.floor((Math.random() * num) + 1);
@@ -170,16 +179,31 @@ function checkWin(){
 
 function addCoins(){
     if(winner === 'diamond')
-        coins += 50;
+        coins += (20 * difficulty[currentDif]);
     if(winner === 'bar')
-        coins += 10;
+        coins += (10 * difficulty[currentDif]);
     if(winner === 'bell')
-        coins += 5;
+        coins += (5 * difficulty[currentDif]);
     if(winner === 'horseshoe')
-        coins += 3;
+        coins += (3 * difficulty[currentDif]);
     if(winner === 'cherry')
-        coins += 2;
+        coins += (2 * difficulty[currentDif]);
     if(winner === 'grape')
-        coins += 1;
-    
+        coins += (1 * difficulty[currentDif]);
+}
+
+function getMoney(){
+    dollars = moneyEl.value;
+    coins = 5 * dollars;
+    render();
+}
+
+function setDifficulty(e){
+    if(e.target === buttonAreaEl) return;
+    if(e.target === easyButton)
+        currentDif = 'e';
+    if(e.target === medButton)
+        currentDif = 'm';
+    if(e.target === hardButton)
+        currentDif = 'h';
 }
