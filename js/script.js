@@ -211,7 +211,10 @@ function setDifficulty(e){
 };
 
 function toggleReward(){
-    rewardDispEl.style.visiblity;
+    if (rewardDispEl.classList.contains('hidden')){
+        rewardDispEl.classList.remove('hidden');
+    }
+    else rewardDispEl.classList.add('hidden');
 }
 
 function toggleAudio(){
