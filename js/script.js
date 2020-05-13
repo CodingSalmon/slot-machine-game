@@ -30,6 +30,8 @@ let dollars, coins, winner, roller1, roller2, roller3, currentDif, isRolling;
 // Cached DOM Elements
 const modalEl1 = document.querySelector('#modal1');
 const modalEl2 = document.querySelector('#modal2');
+const modalEl3 = document.querySelector('#modal3');
+const winModalContentEl = document.querySelector('#winModal');
 
 let moneyEl1 = document.querySelector('#money1');
 let moneyEl2 = document.querySelector('#money2');
@@ -53,6 +55,8 @@ playButtonEl.addEventListener('click', handlePlayClick);
 document.querySelector('#getMoneyButton1').addEventListener('click',getMoney1);
 document.querySelector('#getMoneyButton2').addEventListener('click',getMoney2);
 buttonAreaEl.addEventListener('click',setDifficulty);
+document.querySelector('#displayToggle').addEventListener('click',toggleReward);
+document.querySelector('#audioToggle').addEventListener('click',toggleAudio);
 // Functions
 init();
 
@@ -88,7 +92,7 @@ function handlePlayClick(){
     };
     isRolling = true;
     coins -= difficulty[currentDif];
-    
+
     rollRoller1();
     render();
     setTimeout(() => {rollRoller2();render();},500);
@@ -133,18 +137,41 @@ function openModal2(){
     M.Modal.init(modalEl2,{}).open();
 };
 
+function openModal3(){
+    M.Modal.init(modalEl3,{}).open();
+};
+
 function getRandomInt(num){
     return Math.floor((Math.random() * num) + 1);
 };
 
 function checkWin(){
     if ((rollerEl1.src === rollerEl2.src) && (rollerEl2.src === rollerEl3.src)){
-        if(roller1 === 'diamond') winner = 'diamond';
-        if(roller1 === 'bar') winner = 'bar';
-        if(roller1 === 'bell') winner = 'bell';
-        if(roller1 === 'horseshoe') winner = 'horseshoe';
-        if(roller1 === 'cherry') winner = 'cherry';
-        if(roller1 === 'grape') winner = 'grape';
+        if(roller1 === 'diamond'){
+            winner = 'diamond';
+            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s and won ${20 * difficulty[currentDif]} coins!</p>`;
+        }
+        if(roller1 === 'bar'){
+            winner = 'bar'; openModal3();
+            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s and won ${10 * difficulty[currentDif]} coins!</p>`;
+        }
+        if(roller1 === 'bell'){
+            winner = 'bell'; openModal3();
+            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s and won ${5 * difficulty[currentDif]} coins!</p>`;
+        }
+        if(roller1 === 'horseshoe'){
+            winner = 'horseshoe'; openModal3();
+            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s and won ${3 * difficulty[currentDif]} coins!</p>`;
+        }
+        if(roller1 === 'cherry'){
+            winner = 'cherry'; openModal3();
+            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s and won ${2 * difficulty[currentDif]} coins!</p>`;
+        }
+        if(roller1 === 'grape'){
+            winner = 'grape'; openModal3();
+            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s and won ${1 * difficulty[currentDif]} coins!</p>`;
+        }
+        openModal3();
         addCoins();
     }
     else{
@@ -163,14 +190,14 @@ function addCoins(){
 
 function getMoney1(){
     dollars = Math.floor(parseInt(moneyEl1.value));
-    coins = coins + (5 * dollars);
+    coins += (5 * dollars);
     render();
     initMsg();
 };
 
 function getMoney2(){
     dollars = Math.floor(parseInt(moneyEl2.value));
-    coins = coins + (5 * dollars);
+    coins += (5 * dollars);
     render();
     initMsg();
 };
@@ -185,4 +212,8 @@ function setDifficulty(e){
 
 function toggleReward(){
     rewardDispEl.style.visiblity;
+}
+
+function toggleAudio(){
+
 }

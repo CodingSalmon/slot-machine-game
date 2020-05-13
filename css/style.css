@@ -10,7 +10,7 @@ body{
 
 #middle{
     display:grid;
-    grid-template-rows:50px auto 100px;
+    grid-template-rows:50px auto 50px;
     padding-top:10px;
 }
 
@@ -117,12 +117,6 @@ body{
     font-family: 'Orbitron', sans-serif;
     height:40px;
     width:80px;
-}
-
-#rewardDisplay{
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
 }
 
 .shine{
