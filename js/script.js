@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', openModal1);
 addMoneyEl.addEventListener('click',openModal1);
 playButtonEl.addEventListener('click', handlePlayClick);
 document.querySelector('#getMoneyButton1').addEventListener('click',getMoney1);
-document.querySelector('#getMoneyButton2').addEventListener('click',getMoney2)
+document.querySelector('#getMoneyButton2').addEventListener('click',getMoney2);
 buttonAreaEl.addEventListener('click',setDifficulty);
 // Functions
 init();
@@ -87,7 +87,7 @@ function render(){
     rollerEl2.src = icons[roller2];
     rollerEl3.src = icons[roller3];
     coinDisplayEl.innerHTML = `Current Coins:<br>${coins}`;
-    changeMsg();
+    msgEl.innerText = `You are currently betting ${difficulty[currentDif]} coins.`
 };
 
 function handlePlayClick(){
@@ -219,6 +219,7 @@ function getMoney1(){
 };
 
 function getMoney2(){
+    if(isNaN(dollars)) coins = 0;
     dollars = Math.floor(parseInt(moneyEl2.value));
     coins = coins + (5 * dollars);
     render();
@@ -233,11 +234,5 @@ function setDifficulty(e){
         currentDif = 'm';
     if(e.target === hardButton)
         currentDif = 'h';
-};
-
-function changeMsg(){
-    if (winner)
-        msgEl.innerText = `You won ${difficulty[currentDif]} coins`;
-    if (winner === null)
-        msgEl.innerText = `You lost ${difficulty[currentDif]} coins`;
+    render();
 };
