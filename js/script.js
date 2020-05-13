@@ -47,6 +47,7 @@ let medButton = document.querySelector('#difM');
 let hardButton = document.querySelector('#difH');
 let playButtonEl = document.querySelector('#playButton');
 let rewardDispEl = document.querySelector('#rewardDisplay');
+    const player = new Audio();
 // Event Listeners
 document.addEventListener('DOMContentLoaded', openModal1);
 addMoneyEl.addEventListener('click',openModal1);
@@ -67,6 +68,7 @@ function init() {
     roller3 = undefined;
     currentDif = 'e';
     isRolling = false;
+    isSoundOn = false;
     render();
 };
 
@@ -218,5 +220,14 @@ function toggleReward(){
 }
 
 function toggleAudio(){
-
+    player.src = 'sounds/casino.wav';
+    player.volume = .2;
+    if(isSoundOn){
+        isSoundOn = false;
+        player.pause();
+    }
+    else{
+        isSoundOn = true;
+        player.play();
+    }
 }
