@@ -14,7 +14,7 @@
 
 ## Getting Started
 
-[Click Here to open game in browser](www.github.com/salmon117/slot-machine-game.git)
+[Click Here to open game in browser](https://salmon117.github.io/slot-machine-game/)
 
 ## Future Enhancements
 
