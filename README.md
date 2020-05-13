@@ -20,4 +20,3 @@
 
 1. Add login/logout.
 2. Add mobile responsiveness.
-3. Make message area scroll through like a stock market ticker
