@@ -8,7 +8,7 @@
 
 ![What it looks like when you win coins](images/winGameScreen.png)
 
-![What happend when you run out of coins or try to bet more coins than you have](images/loseGameScreen.png)
+![What happens when you run out of coins or try to bet more coins than you have](images/loseGameScreen.png)
 
 ## Technologies
 
