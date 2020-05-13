@@ -20,21 +20,13 @@ const icons = {
     grape: 'images/grape.png',
     undefined: 'images/undefined.png'
 };
-
 const difficulty = {
     e: 1,
     m: 5,
     h: 10
 };
 // Variables
-let dollars;
-let coins;
-let winner;
-let roller1;
-let roller2;
-let roller3;
-let currentDif;
-let isRolling;
+let dollars, coins, winner, roller1, roller2, roller3, currentDif, isRolling;
 // Cached DOM Elements
 const modalEl1 = document.querySelector('#modal1');
 const modalEl2 = document.querySelector('#modal2');
@@ -43,18 +35,17 @@ let moneyEl1 = document.querySelector('#money1');
 let moneyEl2 = document.querySelector('#money2');
 let coinDisplayEl = document.querySelector('#coinDisp');
 let addMoneyEl = document.querySelector('#addMoney');
-
 let msgEl = document.querySelector('#msg');
-let starAreaEl = document.querySelector('.starArea');
+    let starAreaEl = document.querySelector('.starArea');
 let rollerEl1 = document.querySelector('#roller1 > img');
 let rollerEl2 = document.querySelector('#roller2 > img');
 let rollerEl3 = document.querySelector('#roller3 > img');
-
 let buttonAreaEl = document.querySelector('#buttonArea');
 let easyButton = document.querySelector('#difE');
 let medButton = document.querySelector('#difM');
 let hardButton = document.querySelector('#difH');
 let playButtonEl = document.querySelector('#playButton');
+let rewardDispEl = document.querySelector('#rewardDisplay');
 // Event Listeners
 document.addEventListener('DOMContentLoaded', openModal1);
 addMoneyEl.addEventListener('click',openModal1);
@@ -73,9 +64,7 @@ function init() {
     roller3 = undefined;
     currentDif = 'e';
     isRolling = false;
-
     render();
-    initMsg();
 };
 
 function initMsg(){
@@ -86,6 +75,7 @@ function render(){
     rollerEl1.src = icons[roller1];
     rollerEl2.src = icons[roller2];
     rollerEl3.src = icons[roller3];
+    if(isNaN(coins)) coins = 0;
     coinDisplayEl.innerHTML = `Current Coins:<br>${coins}`;
     msgEl.innerText = `You are currently betting ${difficulty[currentDif]} coins.`
 };
@@ -110,50 +100,32 @@ function handlePlayClick(){
 
 function rollRoller1(){
     num = getRandomInt(100);
-    if (num >= 1 && num <= 2)
-        roller1 = 'diamond';
-    if (num >= 3 && num <= 10)
-        roller1 = 'bar';
-    if (num >= 11 && num <= 22)
-        roller1 = 'bell';
-    if (num >= 23 && num <= 45)
-        roller1 = 'horseshoe';
-    if (num >= 46 && num <= 65)
-        roller1 = 'cherry';
-    if (num >= 66 && num <= 100)
-        roller1 = 'grape';
+    if (num >= 1 && num <= 2) roller1 = 'diamond';
+    if (num >= 3 && num <= 10) roller1 = 'bar';
+    if (num >= 11 && num <= 22) roller1 = 'bell';
+    if (num >= 23 && num <= 35) roller1 = 'horseshoe';
+    if (num >= 36 && num <= 50) roller1 = 'cherry';
+    if (num >= 51 && num <= 100) roller1 = 'grape';
 };
 
 function rollRoller2(){
     num = getRandomInt(100);
-    if (num >= 1 && num <= 2)
-        roller2 = 'diamond';
-    if (num >= 3 && num <= 10)
-        roller2 = 'bar';
-    if (num >= 11 && num <= 22)
-        roller2 = 'bell';
-    if (num >= 23 && num <= 45)
-        roller2 = 'horseshoe';
-    if (num >= 46 && num <= 65)
-        roller2 = 'cherry';
-    if (num >= 66 && num <= 100)
-        roller2 = 'grape';
+    if (num >= 1 && num <= 2) roller2 = 'diamond';
+    if (num >= 3 && num <= 10) roller2 = 'bar';
+    if (num >= 11 && num <= 22) roller2 = 'bell';
+    if (num >= 23 && num <= 35) roller2 = 'horseshoe';
+    if (num >= 36 && num <= 50) roller2 = 'cherry';
+    if (num >= 51 && num <= 100) roller2 = 'grape';
 };
 
 function rollRoller3(){
     num = getRandomInt(100);
-    if (num >= 1 && num <= 2)
-        roller3 = 'diamond';
-    if (num >= 3 && num <= 10)
-        roller3 = 'bar';
-    if (num >= 11 && num <= 22)
-        roller3 = 'bell';
-    if (num >= 23 && num <= 45)
-        roller3 = 'horseshoe';
-    if (num >= 46 && num <= 65)
-        roller3 = 'cherry';
-    if (num >= 66 && num <= 100)
-        roller3 = 'grape';
+    if (num >= 1 && num <= 2) roller3 = 'diamond';
+    if (num >= 3 && num <= 10) roller3 = 'bar';
+    if (num >= 11 && num <= 22) roller3 = 'bell';
+    if (num >= 23 && num <= 35) roller3 = 'horseshoe';
+    if (num >= 36 && num <= 50) roller3 = 'cherry';
+    if (num >= 51 && num <= 100) roller3 = 'grape';
 };
 
 function openModal1(){
@@ -169,19 +141,13 @@ function getRandomInt(num){
 };
 
 function checkWin(){
-    if ((rollerEl1.src === rollerEl2.src && rollerEl2.src === rollerEl3.src) && roller1 !== undefined){
-        if(roller1 === 'diamond')
-            winner = 'diamond';
-        if(roller1 === 'bar')
-            winner = 'bar';
-        if(roller1 === 'bell')
-            winner = 'bell';
-        if(roller1 === 'horseshoe')
-            winner = 'horseshoe';
-        if(roller1 === 'cherry')
-            winner = 'cherry';
-        if(roller1 === 'grape')
-            winner = 'grape';
+    if ((rollerEl1.src === rollerEl2.src && rollerEl2.src === rollerEl3.src) && roller1 !== null){
+        if(roller1 === 'diamond') winner = 'diamond';
+        if(roller1 === 'bar') winner = 'bar';
+        if(roller1 === 'bell') winner = 'bell';
+        if(roller1 === 'horseshoe') winner = 'horseshoe';
+        if(roller1 === 'cherry') winner = 'cherry';
+        if(roller1 === 'grape') winner = 'grape';
         addCoins();
     }
     else{
@@ -190,28 +156,15 @@ function checkWin(){
 };
 
 function addCoins(){
-    if(winner === 'diamond')
-        coins += (20 * difficulty[currentDif]);
-        msgEl.innerText = `You won ${(20 * difficulty[currentDif])} coins`;
-    if(winner === 'bar')
-        coins += (10 * difficulty[currentDif]);
-        msgEl.innerText = `You won ${(10 * difficulty[currentDif])} coins`;
-    if(winner === 'bell')
-        coins += (5 * difficulty[currentDif]);
-        msgEl.innerText = `You won ${(5 * difficulty[currentDif])} coins`;
-    if(winner === 'horseshoe')
-        coins += (3 * difficulty[currentDif]);
-        msgEl.innerText = `You won ${(3 * difficulty[currentDif])} coins`;
-    if(winner === 'cherry')
-        coins += (2 * difficulty[currentDif]);
-        msgEl.innerText = `You won ${(2 * difficulty[currentDif])} coins`;
-    if(winner === 'grape')
-        coins += (1 * difficulty[currentDif]);
-        msgEl.innerText = `You won ${(1 * difficulty[currentDif])} coins`;
+    if(winner === 'diamond') coins += (20 * difficulty[currentDif]);
+    if(winner === 'bar') coins += (10 * difficulty[currentDif]);
+    if(winner === 'bell') coins += (5 * difficulty[currentDif]);
+    if(winner === 'horseshoe') coins += (3 * difficulty[currentDif]);
+    if(winner === 'cherry') coins += (2 * difficulty[currentDif]);
+    if(winner === 'grape') coins += (1 * difficulty[currentDif]);
 };
 
 function getMoney1(){
-    if(isNaN(dollars)) coins = 0;
     dollars = Math.floor(parseInt(moneyEl1.value));
     coins = coins + (5 * dollars);
     render();
@@ -219,7 +172,6 @@ function getMoney1(){
 };
 
 function getMoney2(){
-    if(isNaN(dollars)) coins = 0;
     dollars = Math.floor(parseInt(moneyEl2.value));
     coins = coins + (5 * dollars);
     render();
@@ -228,11 +180,12 @@ function getMoney2(){
 
 function setDifficulty(e){
     if(e.target === buttonAreaEl) return;
-    if(e.target === easyButton)
-        currentDif = 'e';
-    if(e.target === medButton)
-        currentDif = 'm';
-    if(e.target === hardButton)
-        currentDif = 'h';
+    if(e.target === easyButton) currentDif = 'e';
+    if(e.target === medButton) currentDif = 'm';
+    if(e.target === hardButton) currentDif = 'h';
     render();
 };
+
+function toggleReward(){
+
+}
