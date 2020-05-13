@@ -88,14 +88,11 @@ function handlePlayClick(){
     };
     isRolling = true;
     coins -= difficulty[currentDif];
-
-    if(isRolling) starAreaEl.classList.toggle('shine');
-
+    
     rollRoller1();
-    setTimeout(() => {rollRoller2();render();},500);
-    setTimeout(() => {rollRoller3();render();isRolling = false;},1000);
-
     render();
+    setTimeout(() => {rollRoller2();render();},500);
+    setTimeout(() => {rollRoller3();render();checkWin();isRolling = false;render();},1000);
 };
 
 function rollRoller1(){
@@ -141,7 +138,7 @@ function getRandomInt(num){
 };
 
 function checkWin(){
-    if ((rollerEl1.src === rollerEl2.src && rollerEl2.src === rollerEl3.src) && roller1 !== null){
+    if ((rollerEl1.src === rollerEl2.src) && (rollerEl2.src === rollerEl3.src)){
         if(roller1 === 'diamond') winner = 'diamond';
         if(roller1 === 'bar') winner = 'bar';
         if(roller1 === 'bell') winner = 'bell';
@@ -187,5 +184,5 @@ function setDifficulty(e){
 };
 
 function toggleReward(){
-
+    rewardDispEl.style.visiblity;
 }
