@@ -47,7 +47,7 @@ let medButton = document.querySelector('#difM');
 let hardButton = document.querySelector('#difH');
 let playButtonEl = document.querySelector('#playButton');
 let rewardDispEl = document.querySelector('#rewardDisplay');
-    const player = new Audio();
+const player = new Audio();
 // Event Listeners
 document.addEventListener('DOMContentLoaded', openModal1);
 addMoneyEl.addEventListener('click',openModal1);
