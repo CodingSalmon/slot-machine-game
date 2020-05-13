@@ -148,27 +148,27 @@ function checkWin(){
     if ((rollerEl1.src === rollerEl2.src) && (rollerEl2.src === rollerEl3.src)){
         if(roller1 === 'diamond'){
             winner = 'diamond';
-            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s and won ${20 * difficulty[currentDif]} coins!</p>`;
+            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s while betting ${difficulty[currentDif]} coins and won ${20 * difficulty[currentDif]} coins!</p>`;
         }
         if(roller1 === 'bar'){
             winner = 'bar'; openModal3();
-            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s and won ${10 * difficulty[currentDif]} coins!</p>`;
+            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s while betting ${difficulty[currentDif]} coins and won ${10 * difficulty[currentDif]} coins!</p>`;
         }
         if(roller1 === 'bell'){
             winner = 'bell'; openModal3();
-            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s and won ${5 * difficulty[currentDif]} coins!</p>`;
+            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s while betting ${difficulty[currentDif]} coins and won ${5 * difficulty[currentDif]} coins!</p>`;
         }
         if(roller1 === 'horseshoe'){
             winner = 'horseshoe'; openModal3();
-            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s and won ${3 * difficulty[currentDif]} coins!</p>`;
+            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s while betting ${difficulty[currentDif]} coins and won ${3 * difficulty[currentDif]} coins!</p>`;
         }
         if(roller1 === 'cherry'){
             winner = 'cherry'; openModal3();
-            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s and won ${2 * difficulty[currentDif]} coins!</p>`;
+            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s while betting ${difficulty[currentDif]} coins and won ${2 * difficulty[currentDif]} coins!</p>`;
         }
         if(roller1 === 'grape'){
             winner = 'grape'; openModal3();
-            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s and won ${1 * difficulty[currentDif]} coins!</p>`;
+            winModalContentEl.innerHTML = `<h3>You Won!</h3><p>You matched 3 ${winner}s while betting ${difficulty[currentDif]} coins and won ${1 * difficulty[currentDif]} coins!</p>`;
         }
         openModal3();
         addCoins();
