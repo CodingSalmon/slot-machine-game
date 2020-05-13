@@ -6,7 +6,7 @@
 
 ![Main Game Page](images/mainGameScreen.png)
 
-![What it looks like when you win coins](images/winGameScreen.png)
+![What it looks like when you win coins](images/wingamescreen.png)
 
 ![What happens when you run out of coins or try to bet more coins than you have](images/loseGameScreen.png)
 
