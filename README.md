@@ -2,6 +2,8 @@
 
 ## Screenshots
 
+![Starting Game Page](images/StartGameScreen.png)
+
 ![Main Game Page](images/MainGameScreen.png)
 
 ![What it looks like when you win coins](images/WinGameScreen.png)
