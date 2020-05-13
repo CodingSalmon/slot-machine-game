@@ -19,13 +19,13 @@ const icons = {
     horseshoe: 'images/horseshoe.png',
     grape: 'images/grape.png',
     undefined: 'images/undefined.png'
-}
+};
 
 const difficulty = {
     e: 1,
     m: 5,
     h: 10
-}
+};
 // Variables
 let dollars;
 let coins;
@@ -39,10 +39,13 @@ let isRolling;
 const modalEl1 = document.querySelector('#modal1');
 const modalEl2 = document.querySelector('#modal2');
 
-let moneyEl = document.querySelector('#money');
+let moneyEl1 = document.querySelector('#money1');
+let moneyEl2 = document.querySelector('#money2');
 let coinDisplayEl = document.querySelector('#coinDisp');
 let addMoneyEl = document.querySelector('#addMoney');
 
+let msgEl = document.querySelector('#msg');
+let starAreaEl = document.querySelector('.starArea');
 let rollerEl1 = document.querySelector('#roller1 > img');
 let rollerEl2 = document.querySelector('#roller2 > img');
 let rollerEl3 = document.querySelector('#roller3 > img');
@@ -56,7 +59,8 @@ let playButtonEl = document.querySelector('#playButton');
 document.addEventListener('DOMContentLoaded', openModal1);
 addMoneyEl.addEventListener('click',openModal1);
 playButtonEl.addEventListener('click', handlePlayClick);
-document.querySelector('.modal-close').addEventListener('click',getMoney);
+document.querySelector('#getMoneyButton1').addEventListener('click',getMoney1);
+document.querySelector('#getMoneyButton2').addEventListener('click',getMoney2)
 buttonAreaEl.addEventListener('click',setDifficulty);
 // Functions
 init();
@@ -71,6 +75,11 @@ function init() {
     isRolling = false;
 
     render();
+    initMsg();
+};
+
+function initMsg(){
+    msgEl.innerText = `Welcome!`;
 };
 
 function render(){
@@ -78,18 +87,20 @@ function render(){
     rollerEl2.src = icons[roller2];
     rollerEl3.src = icons[roller3];
     coinDisplayEl.innerHTML = `Current Coins:<br>${coins}`;
-
-    checkWin();
+    changeMsg();
 };
 
 function handlePlayClick(){
     if (isRolling) return;
-    if (coins === 0){
+    if (coins < difficulty[currentDif] || isNaN(coins)){
         openModal2();
         return;
-    }
+    };
     isRolling = true;
     coins -= difficulty[currentDif];
+
+    if(isRolling) starAreaEl.classList.toggle('shine');
+
     rollRoller1();
     setTimeout(() => {rollRoller2();render();},500);
     setTimeout(() => {rollRoller3();render();isRolling = false;},1000);
@@ -147,15 +158,15 @@ function rollRoller3(){
 
 function openModal1(){
     M.Modal.init(modalEl1,{}).open();
-}
+};
 
 function openModal2(){
     M.Modal.init(modalEl2,{}).open();
-}
+};
 
 function getRandomInt(num){
     return Math.floor((Math.random() * num) + 1);
-}
+};
 
 function checkWin(){
     if ((rollerEl1.src === rollerEl2.src && rollerEl2.src === rollerEl3.src) && roller1 !== undefined){
@@ -173,30 +184,46 @@ function checkWin(){
             winner = 'grape';
         addCoins();
     }
-    else
+    else{
         winner = null;
-}
+    }
+};
 
 function addCoins(){
     if(winner === 'diamond')
         coins += (20 * difficulty[currentDif]);
+        msgEl.innerText = `You won ${(20 * difficulty[currentDif])} coins`;
     if(winner === 'bar')
         coins += (10 * difficulty[currentDif]);
+        msgEl.innerText = `You won ${(10 * difficulty[currentDif])} coins`;
     if(winner === 'bell')
         coins += (5 * difficulty[currentDif]);
+        msgEl.innerText = `You won ${(5 * difficulty[currentDif])} coins`;
     if(winner === 'horseshoe')
         coins += (3 * difficulty[currentDif]);
+        msgEl.innerText = `You won ${(3 * difficulty[currentDif])} coins`;
     if(winner === 'cherry')
         coins += (2 * difficulty[currentDif]);
+        msgEl.innerText = `You won ${(2 * difficulty[currentDif])} coins`;
     if(winner === 'grape')
         coins += (1 * difficulty[currentDif]);
-}
+        msgEl.innerText = `You won ${(1 * difficulty[currentDif])} coins`;
+};
 
-function getMoney(){
-    dollars = moneyEl.value;
-    coins = 5 * dollars;
+function getMoney1(){
+    if(isNaN(dollars)) coins = 0;
+    dollars = Math.floor(parseInt(moneyEl1.value));
+    coins = coins + (5 * dollars);
     render();
-}
+    initMsg();
+};
+
+function getMoney2(){
+    dollars = Math.floor(parseInt(moneyEl2.value));
+    coins = coins + (5 * dollars);
+    render();
+    initMsg();
+};
 
 function setDifficulty(e){
     if(e.target === buttonAreaEl) return;
@@ -206,4 +233,11 @@ function setDifficulty(e){
         currentDif = 'm';
     if(e.target === hardButton)
         currentDif = 'h';
-}
+};
+
+function changeMsg(){
+    if (winner)
+        msgEl.innerText = `You won ${difficulty[currentDif]} coins`;
+    if (winner === null)
+        msgEl.innerText = `You lost ${difficulty[currentDif]} coins`;
+};

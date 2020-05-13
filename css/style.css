@@ -63,13 +63,13 @@ body{
     width:350px;
 }
 
-#starAreaOne, #starAreaTwo{
+.starArea{
     display:flex;
     justify-content:space-around;
     margin-top:15px;
 }
 
-#starAreaOne > img, #starAreaTwo > img{
+.starArea > img{
     height:60px;
     filter:brightness(.8);
 }
@@ -123,4 +123,8 @@ body{
     display:flex;
     justify-content:flex-end;
     align-items:center;
+}
+
+.shine{
+    filter:brightness(1);
 }
