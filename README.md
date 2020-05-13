@@ -2,11 +2,9 @@
 
 ## Screenshots
 
-![Main Game Page]()
+![Main Game Page](images/MainGameScreen.png)
 
-![What it looks like when you win coins]()
-
-![What it looks like when you lose coins]()
+![What it looks like when you win coins](images/WinGameScreen.png)
 
 ## Technologies
 
