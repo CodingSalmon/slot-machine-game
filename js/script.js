@@ -38,7 +38,6 @@ let moneyEl2 = document.querySelector('#money2');
 let coinDisplayEl = document.querySelector('#coinDisp');
 let addMoneyEl = document.querySelector('#addMoney');
 let msgEl = document.querySelector('#msg');
-    let starAreaEl = document.querySelector('.starArea');
 let rollerEl1 = document.querySelector('#roller1 > img');
 let rollerEl2 = document.querySelector('#roller2 > img');
 let rollerEl3 = document.querySelector('#roller3 > img');
@@ -180,10 +179,10 @@ function checkWin(){
 };
 
 function addCoins(){
-    if(winner === 'diamond') coins += (20 * difficulty[currentDif]);
-    if(winner === 'bar') coins += (10 * difficulty[currentDif]);
-    if(winner === 'bell') coins += (5 * difficulty[currentDif]);
-    if(winner === 'horseshoe') coins += (3 * difficulty[currentDif]);
+    if(winner === 'diamond') coins += (50 * difficulty[currentDif]);
+    if(winner === 'bar') coins += (20 * difficulty[currentDif]);
+    if(winner === 'bell') coins += (10 * difficulty[currentDif]);
+    if(winner === 'horseshoe') coins += (5 * difficulty[currentDif]);
     if(winner === 'cherry') coins += (2 * difficulty[currentDif]);
     if(winner === 'grape') coins += (1 * difficulty[currentDif]);
 };

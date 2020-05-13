@@ -10,7 +10,7 @@ body{
 
 #middle{
     display:grid;
-    grid-template-rows:50px auto 50px;
+    grid-template-rows:50px auto 40px;
     padding-top:10px;
 }
 
@@ -119,6 +119,18 @@ body{
     width:80px;
 }
 
-.shine{
-    filter:brightness(1);
+footer{
+    display:flex;
+    justify-content:space-around;
+
+}
+
+footer > button{
+    margin-top:10px;
+    height:30px;
+}
+
+#rewardDisplay{
+    padding-top:20px;
+    text-align:center;
 }
