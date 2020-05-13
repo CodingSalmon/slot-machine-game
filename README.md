@@ -2,13 +2,13 @@
 
 ## Screenshots
 
-![Starting Game Page](images/StartGameScreen.png)
+![Starting Game Page](images/startGameScreen.png)
 
-![Main Game Page](images/MainGameScreen.png)
+![Main Game Page](images/mainGameScreen.png)
 
-![What it looks like when you win coins](images/WinGameScreen.png)
+![What it looks like when you win coins](images/winGameScreen.png)
 
-![What happend when you run out of coins or try to bet more coins than you have](images/LoseGameScreen.png)
+![What happend when you run out of coins or try to bet more coins than you have](images/loseGameScreen.png)
 
 ## Technologies
 
