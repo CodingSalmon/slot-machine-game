@@ -190,6 +190,7 @@ function addCoins(){
 
 function getMoney1(){
     dollars = Math.floor(parseInt(moneyEl1.value));
+    if(isNaN(dollars))return;
     coins += (5 * dollars);
     render();
     initMsg();
