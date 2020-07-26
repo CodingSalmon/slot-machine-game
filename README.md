@@ -18,10 +18,10 @@
 
 ## Getting Started
 
-[Click Here to open game in browser](https://salmon117.github.io/slot-machine-game/)
+[Click Here to open game in browser](https://CodingSalmon.github.io/slot-machine-game/)
 
 ## Future Enhancements
 
-1. Add login/logout.
-2. Add mobile responsiveness.
-3. Add stars flicker animation.
+1. Add mobile responsiveness.
+2. Add stars flicker animation.
+3. Add login/logout.
